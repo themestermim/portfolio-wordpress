@@ -1,0 +1,186 @@
+@layer components {
+	.input-field {
+		@apply bg-white border border-neutral-50 rounded-lg h-10 w-full flex items-center px-3 gap-2 text-neutral-300 focus-within:text-neutral-800 focus-within:border-primary-500;
+
+		.text-input {
+			@apply text-neutral-800 border-0 w-full h-6 p-0 placeholder:text-neutral-300 focus:outline-none text-14 font-medium;
+		}
+
+		.close {
+			@apply size-5 cursor-pointer text-neutral-800;
+		}
+
+		svg {
+			@apply size-5 flex-none;
+		}
+
+		.icon {
+			@apply select-none pointer-events-none;
+		}
+
+		&.has-error {
+			@apply border-error-500 focus-within:border-error-500;
+			.text-input {
+				@apply text-error-600 placeholder:text-error-600;
+			}
+		}
+	}
+
+	.form-group {
+
+		.input-box {
+			@apply relative flex items-center gap-2 w-full rounded-lg overflow-hidden border border-neutral-100 bg-white px-4 focus-within:border-primary-500 transition-all;
+
+			&:has(.suffix) {
+				.delete-btn {
+					@apply hidden;
+				}
+			}
+
+			&:not(:has(.suffix)) {
+				.input {
+					@apply not-placeholder-shown:pl-5;
+				}
+			}
+
+			&:focus-within {
+				.icon {
+					@apply text-neutral-800;
+				}
+			}
+
+			&:has(.textarea) {
+				.delete-btn {
+					@apply self-start h-auto;
+				}
+			}
+
+			&:has(.file) {
+				@apply border-2 border-dashed;
+			}
+
+			&:has(.icon) {
+				.input {
+					@apply pr-6;
+				}
+
+				.select {
+					@apply pr-5;
+				}
+			}
+		}
+
+		.input {
+			@apply size-full border-none focus:outline-none bg-transparent text-14 font-normal py-0 placeholder:text-neutral-300 text-neutral-800;
+
+			&:placeholder-shown {
+				&+ .delete-btn {
+					@apply hidden;
+				}
+			}
+
+			&[type="tel"] {
+				@apply placeholder:text-right;
+			}
+		}
+
+		.search-input {
+			@apply size-full border-none focus:outline-none bg-transparent text-20 font-bold py-0 placeholder:text-neutral-500 text-neutral-800;
+
+			&:placeholder-shown {
+				&+ .delete-btn {
+					@apply hidden;
+				}
+			}
+		}
+
+		.label {
+			@apply block font-medium text-14 text-black dark:text-white transition cursor-pointer mb-1;
+		}
+
+		.icon {
+			@apply absolute top-1/2 right-4 -translate-y-1/2 size-4 text-neutral-500 select-none pointer-events-none flex-none transition-colors;
+		}
+
+		/*.suffix {*/
+		/*	@apply text-neutral-500 text-12 font-normal block select-none pointer-events-none;*/
+		/*}*/
+
+		.delete-btn {
+			@apply flex h-full items-center cursor-pointer;
+
+			svg {
+				@apply size-4 text-neutral-800;
+			}
+		}
+
+		/*.remove-btn {*/
+		/*	@apply flex absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer;*/
+
+		/*	svg {*/
+		/*		@apply size-4 text-neutral-800;*/
+		/*	}*/
+		/*}*/
+
+		.notif {
+			@apply text-neutral-500 text-12 font-medium mt-1 block select-none pointer-events-none px-2 dark:text-neutral-300 transition;
+		}
+
+		.textarea {
+			@apply size-full border-none focus:outline-none bg-white text-12 font-semibold placeholder:text-neutral-300 text-neutral-800 transition resize-none py-2 not-placeholder-shown:pl-5;
+
+			&:placeholder-shown {
+				&+ .delete-btn {
+					@apply hidden;
+				}
+			}
+
+			&+ .delete-btn {
+				@apply items-start pt-2.5;
+			}
+		}
+
+		&.has-error {
+			.input-box,
+			.search-box {
+				@apply border-error-500 focus-within:border-error-500;
+			}
+
+			.icon {
+				@apply text-neutral-800;
+			}
+
+			.notif {
+				@apply text-error-600 dark:text-error-400;
+			}
+		}
+
+		/*.checkbox-row {*/
+		/*	@apply flex items-center gap-2;*/
+		/*}*/
+
+		/*.checkbox-box {*/
+		/*	@apply size-5 relative;*/
+		/*}*/
+
+		/*.checkbox {*/
+		/*	@apply size-full rounded-sm border border-neutral-800 bg-white checked:bg-neutral-800 appearance-none transition-colors cursor-pointer;*/
+		/*}*/
+
+		/*.tick {*/
+		/*	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white size-3 pointer-events-none select-none;*/
+		/*}*/
+
+		/*.select {*/
+		/*	@apply size-full pr-1 border-none focus:outline-none text-12 text-neutral-400 not-has-[option:checked[value='']]:text-neutral-800;*/
+		/*}*/
+
+		/*.file {*/
+		/*	@apply bg-transparent text-12 font-semibold text-neutral-500 cursor-pointer line-clamp-1 pl-4 break-all;*/
+		/*}*/
+
+		.search-box {
+			@apply relative flex items-center gap-4 w-full rounded-lg overflow-hidden border border-transparent bg-white focus-within:border-primary-500 transition-colors px-2;
+		}
+	}
+}

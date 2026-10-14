@@ -1,0 +1,42 @@
+{
+	"name": "wp-gulp",
+	"description": "A WPGulp based project.",
+	"version": "0.0.1",
+	"repository": "https://gitlab.markitasdone.com/markitasdone/markitasdone/resources/wpgulp",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^8.0.7",
+		"@babel/preset-env": "^8.0.7",
+		"@eslint/eslintrc": "^3.3.7",
+		"@eslint/js": "^10.0.1",
+		"@tailwindcss/postcss": "^4.3.3",
+		"beepbeep": "^1.3.0",
+		"eslint": "^10.12.0",
+		"eslint-config-wordpress": "^2.0.0",
+		"gulp": "^5.0.1",
+		"gulp-babel": "^8.1.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-line-ending-corrector": "^1.0.3",
+		"gulp-notify": "^5.0.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-remember": "^1.0.1",
+		"gulp-rename": "^2.1.0",
+		"gulp-terser": "^2.1.0",
+		"postcss": "^8.5.30",
+		"postcss-nesting": "^14.0.3"
+	},
+	"engines": {
+		"node": "^22.18.0 || >=24.11.0"
+	},
+	"scripts": {
+		"tailwind:dev:home": "npx @tailwindcss/cli -i ./src/styles/home.css -o ./assets/styles/home.css --watch",
+		"tailwind:build:home": "tailwindcss -i ./src/styles/home.css -o ./assets/styles/home.css --minify",
+		"js-custom": "gulp customJS",
+		"tailwind:dev:header": "tailwindcss -i ./src/styles/header.css -o ./assets/styles/header.css --watch",
+		"tailwind:build:header": "tailwindcss -i ./src/styles/header.css -o ./assets/styles/header.css --minify"
+	},
+	"dependencies": {
+		"@tailwindcss/cli": "^4.3.3",
+		"tailwindcss": "^4.3.3"
+	}
+}

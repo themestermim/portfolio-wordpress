@@ -1,0 +1,160 @@
+@import "tailwindcss" source(none);
+@import "./components/theme.css";
+@source "../../page-templates/homepage.php";
+@source "../../template-parts/portfolio/**/*.php";
+@source "../scripts/portfolio.js";
+@theme inline {
+	--color-primary: var(--primary-500);
+	--color-background: var(--neutral-900);
+	--color-secondary: var(--neutral-500);
+	--color-accent: var(--neutral-50);
+	--color-error: var(--error-200);
+}
+@layer components {
+	.c-btn {
+        @apply rounded-lg relative overflow-hidden flex items-center justify-center gap-1 px-6 disabled:opacity-80 disabled:pointer-events-none border transition-all duration-300;
+
+        &.btn-primary-fill {
+            @apply text-background bg-transparent bg-gradient-to-r from-primary to-primary border-primary before:absolute before:content-[''] before:top-0 before:right-0 before:w-2/3 before:h-full before:bg-gradient-to-l before:from-secondary/75 before:to-transparent before:transition-all before:duration-300 before:opacity-0 hover:before:opacity-100;
+
+            * {
+                @apply relative z-10;
+            }
+        }
+
+        &.btn-dark-fill {
+            @apply text-accent bg-transparent bg-gradient-to-r from-background to-background border-background before:absolute before:content-[''] before:top-0 before:right-0 before:w-2/3 before:h-full before:bg-gradient-to-l before:from-secondary/75 before:to-transparent before:transition-all before:duration-300 before:opacity-0 hover:before:opacity-100;
+
+            * {
+                @apply relative z-10;
+            }
+        }
+
+        &.btn-sm {
+            @apply min-h-11 text-14 font-medium;
+
+            svg {
+                @apply size-5;
+            }
+        }
+
+        &.btn-md {
+            @apply min-h-11 text-16 font-medium;
+
+            svg {
+                @apply size-5;
+            }
+        }
+
+        &.btn-full {
+            @apply w-full;
+        }
+
+        &.btn-center {
+            @apply justify-center;
+        }
+    }
+
+    .c-form-group {
+        @apply flex flex-col gap-1.5;
+
+        .input {
+            @apply w-full border border-transparent rounded-lg bg-background transition focus:outline-none px-2 text-16 placeholder:text-secondary text-accent focus:border-white;
+        }
+
+        .text {
+            @apply h-10;
+        }
+        
+        .description {
+            @apply h-40 py-2 resize-none;
+        }
+
+        .notif-row {
+            @apply hidden text-12 font-normal items-center;
+        }
+
+        .notif {
+            @apply flex items-center gap-1.5 text-accent bg-accent/10 px-3 py-1 rounded-xl border border-accent transition;
+        }
+
+        &.has-notif {
+            .notif-row {
+                @apply flex;
+            }
+        }
+        
+        &.has-error {
+            .input {
+                @apply border-error;
+            }
+
+            .notif-row {
+                @apply flex;
+            }
+
+            .notif {
+                @apply text-error bg-error/10 border-error;
+            }
+        }
+    }
+}
+
+
+
+@font-face {
+	font-family: Estedad;
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("../portfolio/fonts/estedad/regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: Estedad;
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("../portfolio/fonts/estedad/medium.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: Estedad;
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("../portfolio/fonts/estedad/bold.woff2") format("woff2");
+}
+
+
+body.portfolio-home {
+    font-family: Estedad, sans-serif;
+    direction: rtl;
+}
+
+body.portfolio-home {
+    @apply bg-background text-white cursor-default;
+}
+
+.unique-title {
+    @apply pb-3 before:absolute before:content-[''] before:h-1 before:w-16 before:rounded-sm before:bg-gradient-to-r before:from-primary before:to-secondary before:bottom-0 before:left-1/2 before:-translate-x-1/2;
+}
+
+
+.portfolio-home .container { @apply w-full max-w-7xl mx-auto px-4; }
+.portfolio-home .c-btn { @apply min-h-11; }
+.portfolio-home .c-form-group .input::placeholder { @apply text-accent/70; }
+.portfolio-home :is(a, button, input, textarea):focus-visible { @apply outline-2 outline-offset-4 outline-primary; }
+.portfolio-home .marquee { animation: portfolio-scroll 25s linear infinite; }
+.portfolio-home .marquee-list:is(:hover, :focus-within) .marquee { animation-play-state: paused; }
+@keyframes portfolio-scroll { to { transform: translateX(50%); } }
+[x-cloak] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	.portfolio-home .marquee { animation: none; }
+	.portfolio-home .marquee-copy { display: none; }
+	.portfolio-home *, .portfolio-home *::before { transition: none !important; }
+}
+.portfolio-home .marquee-list { scrollbar-width: none; }
+
+

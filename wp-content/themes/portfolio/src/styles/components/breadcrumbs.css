@@ -1,0 +1,12 @@
+#breadcrumbs {
+	&>span {
+		@apply flex items-center gap-2 py-4 overflow-hidden;
+
+		span {
+			@apply has-[a]:text-neutral-500 text-xs text-neutral-800 font-medium has-[a]:flex-none not-has-[a]:line-clamp-1 transition lg:text-sm;
+		}
+	}
+	.seprator {
+		@apply h-2.5 flex-none;
+	}
+}
