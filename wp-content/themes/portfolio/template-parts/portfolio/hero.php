@@ -1,3 +1,11 @@
+<?php
+$hero_description = mim_portfolio_field( 'hero_description' );
+$phone = mim_portfolio_phone_number();
+$whatsapp_phone = preg_replace( '/^00/', '', ltrim( $phone, '+' ) );
+if ( preg_match( '/^09[0-9]{9}$/', $whatsapp_phone ) ) {
+	$whatsapp_phone = '98' . substr( $whatsapp_phone, 1 );
+}
+?>
 <section class="flex flex-col gap-4 lg:items-center lg:flex-row-reverse lg:gap-8">
 	<div class="w-full flex justify-center relative lg:w-auto lg:px-8 lg:flex-none before:absolute before:content-[''] before:size-48 before:bg-primary/75 before:rounded-full before:top-1/2 before:-translate-y-1/2 before:blur-[7rem]">
 		<div class="border-4 border-primary rounded-full p-1 relative z-10 lg:p-2 lg:border-[6px]">
@@ -15,31 +23,35 @@
 			<span class="text-primary text-24 font-bold inline">برنامه نویس</span>&nbsp;
 			فرانت اند هستم
 		</div>
-		<p class="text-white text-16 font-medium mt-4 lg:mt-6">
-		با بیش از 5 سال تجربه در توسعه و بازطراحی اپلیکیشن‌های وب مقیاس‌پذیر. تمرکز اصلی بر Nuxt.js، SSR، معماری کامپوننت‌محور و بهینه‌سازی عملکرد است. تجربه تحلیل کدبیس‌های قدیمی، اتخاذ تصمیم‌های فنی برای افزایش سرعت، سئو و قابلیت توسعه، و پیاده‌سازی راهکارهایی که منجر به بهبود محسوس تجربه کاربری و نتایج Lighthouse شده‌اند. توانمند در همکاری بین‌تیمی و درک نیازهای بک‌اند در پروژه‌های داده‌محور.
-	</p>
-	<ul class="mt-4 flex items-start flex-wrap gap-4 lg:gap-6 *:text-primary *:border *:border-primary *:flex *:items-center *:justify-center *:size-14 *:rounded-full *:relative *:overflow-hidden *:before:absolute *:before:content-[''] *:before:size-8 *:before:rounded-full *:before:bg-primary *:before:blur-xl">
-		<li>
-			<a href="https://wa.me/989307065673?text=سلام" title="واتس اپ" target="_blank" rel="noopener noreferrer" class="relative z-10 flex size-full items-center justify-center">
-				<svg class="size-7">
-					<use href="#svg-whatsapp" >
-				</use>
-			</svg>
-		</a>
-	</li>
-	<li>
-		<a href="tel:09027658338" title="تماس" class="relative z-10 flex size-full items-center justify-center">
-			<svg class="size-7">
-				<use href="#svg-phone" >
-			</use>
-		</svg>
-	</a>
-</li>
-</ul>
-<div class="flex items-center gap-4 mt-4 lg:mt-8">
-	<a href="#projects" class="c-btn btn-primary-fill btn-md">
-		<span>نمونه کار ها</span>
-	</a>
-</div>
-</div>
+		<?php if ( $hero_description ) : ?>
+			<div class="text-white text-16 font-medium mt-4 lg:mt-6">
+				<?php echo wp_kses_post( $hero_description ); ?>
+			</div>
+		<?php endif; ?>
+		<?php if ( $phone ) : ?>
+			<ul class="mt-4 flex items-start flex-wrap gap-4 lg:gap-6 *:text-primary *:border *:border-primary *:flex *:items-center *:justify-center *:size-14 *:rounded-full *:relative *:overflow-hidden *:before:absolute *:before:content-[''] *:before:size-8 *:before:rounded-full *:before:bg-primary *:before:blur-xl">
+				<li>
+					<a href="<?php echo esc_url( 'https://wa.me/' . $whatsapp_phone . '?text=' . rawurlencode( 'سلام' ) ); ?>" title="واتس اپ" target="_blank" rel="noopener noreferrer" class="relative z-10 flex size-full items-center justify-center">
+						<svg class="size-7">
+							<use href="#svg-whatsapp">
+							</use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo esc_url( 'tel:' . $phone ); ?>" title="تماس" class="relative z-10 flex size-full items-center justify-center">
+						<svg class="size-7">
+							<use href="#svg-phone">
+							</use>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		<?php endif; ?>
+		<div class="flex items-center gap-4 mt-4 lg:mt-8">
+			<a href="#projects" class="c-btn btn-primary-fill btn-md">
+				<span>نمونه کار ها</span>
+			</a>
+		</div>
+	</div>
 </section>

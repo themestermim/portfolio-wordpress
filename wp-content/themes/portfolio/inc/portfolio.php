@@ -1,5 +1,21 @@
 <?php
 /** Portfolio home integration and contact endpoint. */
+function mim_portfolio_field( $name, $post_id = false ) {
+	if ( ! function_exists( 'get_field' ) ) {
+		return '';
+	}
+	$value = get_field( $name, $post_id ?: get_queried_object_id() );
+	return is_string( $value ) ? $value : '';
+}
+
+function mim_portfolio_phone_number() {
+	$phone = strtr( mim_portfolio_field( 'phone', 'option' ), array_combine(
+		array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩' ),
+		array( '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' )
+	) );
+	return preg_replace( '/[^0-9+]/', '', $phone );
+}
+
 function mim_is_portfolio_home() {
 	return is_front_page() || is_page_template( 'page-templates/homepage.php' );
 }
@@ -16,25 +32,3 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script( 'portfolio-home', get_template_directory_uri() . '/assets/scripts/portfolio.js', array(), filemtime( get_template_directory() . '/assets/scripts/portfolio.js' ), true );
 	wp_scripts()->registered['alpine']->deps[] = 'portfolio-home';
 }, 20 );
-function mim_portfolio_contact() {
-	if ( 'POST' !== $_SERVER['REQUEST_METHOD'] || ! check_ajax_referer( 'portfolio_contact', 'nonce', false ) ) {
-		wp_send_json_error( array( 'message' => 'اعتبار فرم منقضی شده؛ صفحه را تازه کنید.' ), 403 );
-	}
-	$data = array();
-	foreach ( array( 'name', 'email', 'subject', 'description', 'website' ) as $field ) {
-		if ( isset( $_POST[$field] ) && ! is_string( $_POST[$field] ) ) { wp_send_json_error( array( 'message' => 'اطلاعات فرم معتبر نیست.' ), 400 ); }
-		$value = isset( $_POST[$field] ) ? wp_unslash( $_POST[$field] ) : '';
-		$data[$field] = 'description' === $field ? sanitize_textarea_field( $value ) : sanitize_text_field( $value );
-	}
-	if ( $data['website'] || ! is_email( $data['email'] ) || mb_strlen( $data['name'] ) < 3 || mb_strlen( $data['subject'] ) < 3 || mb_strlen( $data['description'] ) < 10 || mb_strlen( $data['description'] ) > 5000 || strlen( $data['email'] ) > 200 || mb_strlen( $data['name'] ) > 200 || mb_strlen( $data['subject'] ) > 200 ) {
-		wp_send_json_error( array( 'message' => 'نام و موضوع حداقل ۳ حرف، پیام حداقل ۱۰ حرف و ایمیل معتبر لازم است.' ), 400 );
-	}
-	$key = 'portfolio_contact_' . hash_hmac( 'sha256', $_SERVER['REMOTE_ADDR'] ?? '', wp_salt() );
-	if ( get_transient( $key ) ) { wp_send_json_error( array( 'message' => 'لطفاً یک دقیقه بعد دوباره تلاش کنید.' ), 429 ); }
-	set_transient( $key, 1, MINUTE_IN_SECONDS );
-	$sent = wp_mail( 'themestermim@gmail.com', $data['subject'], "Name: " . $data['name'] . "\nEmail: " . $data['email'] . "\n\n" . $data['description'], array( 'Reply-To: ' . sanitize_email( $data['email'] ) ) );
-	if ( ! $sent ) { wp_send_json_error( array( 'message' => 'ارسال ایمیل انجام نشد. لطفاً با themestermim@gmail.com تماس بگیرید.' ), 500 ); }
-	wp_send_json_success( array( 'message' => 'پیام شما برای ارسال پذیرفته شد. ممنون از تماس شما.' ) );
-}
-add_action( 'wp_ajax_portfolio_contact', 'mim_portfolio_contact' );
-add_action( 'wp_ajax_nopriv_portfolio_contact', 'mim_portfolio_contact' );

@@ -23,6 +23,10 @@
 wp-content/*
 #!wp-content/plugins/
 !wp-content/themes/
+!wp-content/mu-plugins/
+wp-content/mu-plugins/*
+!wp-content/mu-plugins/portfolio-contact.php
+!wp-content/mu-plugins/portfolio-contact/
 
 # Ignore everything in the "plugins" directory, except the plugins you
 # specify (see the commented-out examples for hints on how to do this.)

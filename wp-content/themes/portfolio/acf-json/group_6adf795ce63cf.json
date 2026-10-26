@@ -3,9 +3,9 @@
     "title": "صفحه اصلی",
     "fields": [
         {
-            "key": "field_6adf795d139f3",
-            "label": "درباره من",
-            "name": "about_me",
+            "key": "field_6adf7a4a98583",
+            "label": "توضیحات هیرو",
+            "name": "hero_description",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -24,9 +24,9 @@
             "delay": 1
         },
         {
-            "key": "field_6adf7a4a98583",
-            "label": "توضیحات هیرو",
-            "name": "hero_description",
+            "key": "field_6adf795d139f3",
+            "label": "درباره من",
+            "name": "about_me",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -66,5 +66,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793030755
+    "modified": 1793031050
 }
