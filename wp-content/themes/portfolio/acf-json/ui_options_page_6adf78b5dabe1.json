@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_6adf78b5dabe1",
+    "title": "تنظیمات عمومی",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "تنظیمات عمومی",
+    "menu_slug": "theme-settings",
+    "parent_slug": "options-general.php",
+    "advanced_configuration": 0,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "بروزرسانی",
+    "updated_message": "تنظیمات به روز شدند",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1793030357
+}

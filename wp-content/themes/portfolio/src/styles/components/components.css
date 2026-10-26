@@ -1,0 +1,19 @@
+.container {
+	@apply max-w-7xl mx-auto px-4;
+}
+
+.text-ltr {
+	direction: ltr;
+}
+
+.scrollbar-none {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE و Edge قدیمی */
+}
+
+[x-cloak] { display: none !important; }
+
+template[x-for], template[x-if] {
+	display: none;
+}
+

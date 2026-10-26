@@ -1,0 +1,115 @@
+@import "./colors.css";
+
+@theme {
+	--font-*: initial;
+	--font-yekan: "IranYekan";
+	--color-*: initial;
+	--color-white: #fff;
+	--color-black: oklch(0.1448 0 0);
+	--color-transparent: transparent;
+
+	--color-neutral-50: var(--neutral-50);
+	--color-neutral-100: var(--neutral-100);
+	--color-neutral-200: var(--neutral-200);
+	--color-neutral-300: var(--neutral-300);
+	--color-neutral-400: var(--neutral-400);
+	--color-neutral-500: var(--neutral-500);
+	--color-neutral-600: var(--neutral-600);
+	--color-neutral-700: var(--neutral-700);
+	--color-neutral-800: var(--neutral-800);
+	--color-neutral-900: var(--neutral-900);
+
+	--color-primary-50: var(--primary-50);
+	--color-primary-100: var(--primary-100);
+	--color-primary-200: var(--primary-200);
+	--color-primary-300: var(--primary-300);
+	--color-primary-400: var(--primary-400);
+	--color-primary-500: var(--primary-500);
+	--color-primary-600: var(--primary-600);
+	--color-primary-700: var(--primary-700);
+	--color-primary-800: var(--primary-800);
+	--color-primary-900: var(--primary-900);
+	--color-primary: var(--color-primary-500);
+
+	--color-error-50: var(--error-50);
+	--color-error-100: var(--error-100);
+	--color-error-200: var(--error-200);
+	--color-error-300: var(--error-300);
+	--color-error-400: var(--error-400);
+	--color-error-500: var(--error-500);
+	--color-error-600: var(--error-600);
+	--color-error-700: var(--error-700);
+	--color-error-800: var(--error-800);
+	--color-error-900: var(--error-900);
+	--color-error: var(--color-error-500);
+
+	--breakpoint-xl: 84rem;
+	--breakpoint-2xl: 9999rem;
+
+	--text-10: 0.625rem;
+	--text-10--line-height: 1.5;
+	--text-12: 0.75rem;
+	--text-12--line-height: 1.5;
+	--text-14: 0.875rem;
+	--text-14--line-height: 1.5;
+	--text-16: 1rem;
+	--text-16--line-height: 1.5;
+	--text-18: 1.125rem;
+	--text-18--line-height: 1.5;
+	--text-20: 1.25rem;
+	--text-20--line-height: 1.5;
+	--text-22: 1.375rem;
+	--text-22--line-height: 1.5;
+	--text-24: 1.5rem;
+	--text-24--line-height: 1.5;
+	--text-26: 1.625rem;
+	--text-26--line-height: 1.5;
+	--text-28: 1.75rem;
+	--text-28--line-height: 1.5;
+	--text-30: 1.875rem;
+	--text-30--line-height: 1.5;
+	--text-32: 2rem;
+	--text-32--line-height: 1.5;
+	--text-34: 2.125rem;
+	--text-34--line-height: 1.5;
+	--text-36: 2.25rem;
+	--text-36--line-height: 1.5;
+	--text-38: 2.375rem;
+	--text-38--line-height: 1.5;
+	--text-40: 2.5rem;
+	--text-40--line-height: 1.5;
+
+	--shadow-*: initial;
+
+	--blur-px: 1px;
+
+	--animate-jump: jump 300ms ease-in-out;
+	@keyframes jump {
+		0% {
+			transform: translateY(-16px);
+		}
+		100% {
+			transform: translateY(0px);
+		}
+	}
+
+	--default-transition-duration: 300ms;
+}
+
+@layer base {
+	img {
+		@apply align-middle;
+	}
+
+	html {
+		@apply scroll-smooth;
+	}
+
+	body {
+		@apply bg-white font-yekan cursor-default;
+	}
+
+	button {
+		@apply cursor-pointer;
+	}
+}

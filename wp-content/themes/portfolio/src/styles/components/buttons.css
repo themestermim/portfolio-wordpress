@@ -1,0 +1,61 @@
+@layer components {
+	.c-btn {
+		@apply cursor-pointer border border-solid flex items-center rounded-full disabled:pointer-events-none transition;
+
+		&.btn-sm {
+			@apply h-8 px-3 text-xs font-medium;
+
+			svg {
+				@apply size-5;
+			}
+		}
+
+		&.btn-md {
+			@apply h-10 px-3 text-sm font-medium;
+
+			svg {
+				@apply size-6;
+			}
+		}
+
+		&.btn-sm-icon {
+			@apply size-8 justify-center;
+
+			svg {
+				@apply size-5;
+			}
+		}
+
+		&.btn-md-icon {
+			@apply size-10 justify-center;
+
+			svg {
+				@apply size-6;
+			}
+		}
+
+		&.btn-primary-filled {
+			@apply bg-primary border-primary text-primary-50 disabled:bg-neutral-50 dark:disabled:bg-neutral-900 disabled:text-neutral-500 dark:disabled:text-neutral-700 lg:hover:bg-primary-900 focus:border-primary-900;
+		}
+
+		&.btn-primary-outline {
+			@apply bg-white border-primary text-primary dark:text-primary-200 disabled:border-neutral-200 disabled:text-neutral-200 lg:hover:border-primary-700 lg:hover:text-primary-700 focus:border-primary-900 focus:text-primary-900;
+		}
+
+		&.btn-primary-text {
+			@apply !px-0 bg-transparent border-transparent text-primary disabled:text-neutral-200 lg:hover:text-primary-700 focus:text-primary-700 focus:bg-primary-50;
+		}
+
+		&.btn-center {
+			@apply justify-center;
+		}
+
+		&.btn-full {
+			@apply w-full;
+		}
+
+		span {
+			@apply px-2;
+		}
+	}
+}
