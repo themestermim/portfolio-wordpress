@@ -5,6 +5,10 @@ function mim_portfolio_field( $name, $post_id = false ) {
 		return '';
 	}
 	$value = get_field( $name, $post_id ?: get_queried_object_id() );
+	// Preserve home-page biography content until it is edited on the About page.
+	if ( ! $post_id && ! $value && is_page_template( 'page-templates/about.php' ) && in_array( $name, array( 'hero_description', 'about_me' ), true ) ) {
+		$value = get_field( $name, (int) get_option( 'page_on_front' ) );
+	}
 	return is_string( $value ) ? $value : '';
 }
 
@@ -19,12 +23,20 @@ function mim_portfolio_phone_number() {
 function mim_is_portfolio_home() {
 	return is_front_page() || is_page_template( 'page-templates/homepage.php' );
 }
+function mim_is_portfolio_page() {
+	return mim_is_portfolio_home() || is_page_template( 'page-templates/about.php' );
+}
+
+function mim_portfolio_about_url() {
+	$pages = get_pages( array( 'meta_key' => '_wp_page_template', 'meta_value' => 'page-templates/about.php', 'number' => 1 ) );
+	return $pages ? get_permalink( $pages[0] ) : '';
+}
 add_filter( 'body_class', function ( $classes ) {
-	if ( mim_is_portfolio_home() ) { $classes[] = 'portfolio-home'; }
+	if ( mim_is_portfolio_page() ) { $classes[] = 'portfolio-home'; }
 	return $classes;
 } );
 add_action( 'wp_enqueue_scripts', function () {
-	if ( ! mim_is_portfolio_home() ) { return; }
+	if ( ! mim_is_portfolio_page() ) { return; }
 	wp_dequeue_style( 'mim-header' );
 	wp_dequeue_style( 'swiper-css' );
 	wp_dequeue_script( 'swiper-js' );

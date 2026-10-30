@@ -1,6 +1,6 @@
 {
     "key": "group_6adf795ce63cf",
-    "title": "صفحه اصلی",
+    "title": "صفحه درباره من",
     "fields": [
         {
             "key": "field_6adf7a4a98583",
@@ -50,7 +50,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/homepage.php"
+                "value": "page-templates\/about.php"
             }
         ]
     ],
@@ -66,5 +66,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793031050
+    "modified": 1793382904
 }

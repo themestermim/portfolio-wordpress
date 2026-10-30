@@ -7,7 +7,7 @@ if ( preg_match( '/^09[0-9]{9}$/', $whatsapp_phone ) ) {
 }
 ?>
 <section class="flex flex-col gap-4 lg:items-center lg:flex-row-reverse lg:gap-8">
-	<div class="w-full flex justify-center relative lg:w-auto lg:px-8 lg:flex-none before:absolute before:content-[''] before:size-48 before:bg-primary/75 before:rounded-full before:top-1/2 before:-translate-y-1/2 before:blur-[7rem]">
+	<div class="w-full flex justify-center relative lg:w-auto lg:px-8 lg:flex-none">
 		<div class="border-4 border-primary rounded-full p-1 relative z-10 lg:p-2 lg:border-[6px]">
 			<div class="size-40 flex-none overflow-hidden rounded-full lg:size-72">
 				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/portfolio/img/mehran-mahmoudi.png' ); ?>" alt="مهران محمودی" class="size-full object-cover" width="288" height="288" fetchpriority="high" />
@@ -29,7 +29,7 @@ if ( preg_match( '/^09[0-9]{9}$/', $whatsapp_phone ) ) {
 			</div>
 		<?php endif; ?>
 		<?php if ( $phone ) : ?>
-			<ul class="mt-4 flex items-start flex-wrap gap-4 lg:gap-6 *:text-primary *:border *:border-primary *:flex *:items-center *:justify-center *:size-14 *:rounded-full *:relative *:overflow-hidden *:before:absolute *:before:content-[''] *:before:size-8 *:before:rounded-full *:before:bg-primary *:before:blur-xl">
+			<ul class="mt-4 flex items-start flex-wrap gap-4 lg:gap-6 *:text-primary *:border *:border-primary *:flex *:items-center *:justify-center *:size-14 *:rounded-full *:relative *:overflow-hidden">
 				<li>
 					<a href="<?php echo esc_url( 'https://wa.me/' . $whatsapp_phone . '?text=' . rawurlencode( 'سلام' ) ); ?>" title="واتس اپ" target="_blank" rel="noopener noreferrer" class="relative z-10 flex size-full items-center justify-center">
 						<svg class="size-7">
@@ -49,7 +49,7 @@ if ( preg_match( '/^09[0-9]{9}$/', $whatsapp_phone ) ) {
 			</ul>
 		<?php endif; ?>
 		<div class="flex items-center gap-4 mt-4 lg:mt-8">
-			<a href="#projects" class="c-btn btn-primary-fill btn-md">
+			<a href="<?php echo esc_url( home_url( '/#projects' ) ); ?>" class="c-btn btn-primary-fill btn-md">
 				<span>نمونه کار ها</span>
 			</a>
 		</div>

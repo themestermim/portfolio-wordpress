@@ -40,3 +40,12 @@ function portfolioContact() {
 		}
 	};
 }
+
+function portfolioProjects() {
+	return {
+		expanded: false,
+		showAll() {
+			this.expanded = true;
+		}
+	};
+}

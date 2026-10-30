@@ -28,4 +28,4 @@
 
 
 
-<?php if ( ! mim_is_portfolio_home() ) { get_template_part( 'template-parts/layout/header' ); } ?>
+<?php if ( ! mim_is_portfolio_page() ) { get_template_part( 'template-parts/layout/header' ); } ?>

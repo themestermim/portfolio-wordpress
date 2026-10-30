@@ -7,10 +7,10 @@ $phone_label = mim_portfolio_field( 'phone', 'option' );
 $phone = mim_portfolio_phone_number();
 ?>
 <div>
-	<h2 class="text-center relative font-bold text-24 unique-title">درباره من</h2>
-	<section class="mx-auto w-full max-w-2xl rounded-xl p-4 mt-6 bg-secondary text-accent text-16">
+	<h2 class="portfolio-section-title">درباره من</h2>
+	<section class="w-full max-w-4xl rounded-xl p-4 mt-4 lg:mt-6 bg-secondary text-accent text-16">
 		<?php if ( $about_me ) : ?>
-			<div class="space-y-4">
+			<div class="space-y-4 leading-8">
 				<?php echo wp_kses_post( $about_me ); ?>
 			</div>
 		<?php endif; ?>
